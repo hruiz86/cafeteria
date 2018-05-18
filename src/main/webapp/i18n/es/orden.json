@@ -1,0 +1,25 @@
+
+{
+    "cafeteriaApp": {
+        "orden" : {
+            "home": {
+                "title": "Ordens",
+                "createLabel": "Crear nuevo Orden",
+                "createOrEditLabel": "Crear o editar Orden"
+            },
+            "created": "Un nuevo Orden ha sido creado con el identificador {{ param }}",
+            "updated": "Un Orden ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Orden ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Orden {{ id }}?"
+            },
+            "detail": {
+                "title": "Orden"
+            },
+            "state": "State",
+            "total": "Total",
+            "garzon": "Garzon",
+            "product": "Product"
+        }
+    }
+}

@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="cafeteriaApp.garzon.home.title">Garzons</span>
+        <button class="btn btn-primary float-right jh-create-entity create-garzon" [routerLink]="['/', { outlets: { popup: ['garzon-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cafeteriaApp.garzon.home.createLabel">
+            Create new Garzon
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="garzons">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userId"><span jhiTranslate="cafeteriaApp.garzon.userId">User Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="picture"><span jhiTranslate="cafeteriaApp.garzon.picture">Picture</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="cafeteriaApp.garzon.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="cafeteriaApp.garzon.lastName">Last Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orden.id"><span jhiTranslate="cafeteriaApp.garzon.orden">Orden</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bonos.id"><span jhiTranslate="cafeteriaApp.garzon.bonos">Bonos</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="attendanceRecord.id"><span jhiTranslate="cafeteriaApp.garzon.attendanceRecord">Attendance Record</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let garzon of garzons ;trackBy: trackId">
+                <td><a [routerLink]="['../garzon', garzon.id ]">{{garzon.id}}</a></td>
+                <td>{{garzon.userId}}</td>
+                <td>{{garzon.picture}}</td>
+                <td>{{garzon.name}}</td>
+                <td>{{garzon.lastName}}</td>
+                <td>
+                    <div *ngIf="garzon.orden">
+                        <a [routerLink]="['../orden', garzon.orden?.id ]" >{{garzon.orden?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="garzon.bonos">
+                        <a [routerLink]="['../bonos', garzon.bonos?.id ]" >{{garzon.bonos?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="garzon.attendanceRecord">
+                        <a [routerLink]="['../attendance-record', garzon.attendanceRecord?.id ]" >{{garzon.attendanceRecord?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../garzon', garzon.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'garzon/'+ garzon.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'garzon/'+ garzon.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="garzons && garzons.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

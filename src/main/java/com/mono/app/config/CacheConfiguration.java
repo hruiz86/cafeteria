@@ -42,6 +42,16 @@ public class CacheConfiguration {
             cm.createCache(com.mono.app.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.mono.app.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.mono.app.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Product.class.getName(), jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Product.class.getName() + ".ordens", jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Garzon.class.getName(), jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Orden.class.getName(), jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Orden.class.getName() + ".garzons", jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Orden.class.getName() + ".products", jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Bonos.class.getName(), jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.Bonos.class.getName() + ".garzons", jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.AttendanceRecord.class.getName(), jcacheConfiguration);
+            cm.createCache(com.mono.app.domain.AttendanceRecord.class.getName() + ".garzons", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

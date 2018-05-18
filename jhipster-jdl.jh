@@ -1,0 +1,56 @@
+enum State {
+	PENDING_APPROVAL, APROVED, CANCEL
+}
+
+enum BonoType {
+	DAYLY, MONTHLY
+}
+
+enum AttendanceType{
+	ON, OFF
+}
+
+entity Product {
+	name String required,
+    description String required,
+    stock Integer,
+    price Double required
+}
+
+entity Garzon {
+	userId String required,
+    picture String required,
+    name String required,
+    lastName String
+}
+
+entity Orden {
+	state State required,
+    total Double required
+}
+
+entity Bonos {
+	type BonoType required,  
+    amount Double required
+}
+
+entity AttendanceRecord {
+	date Instant required,
+    type AttendanceType required
+}
+
+relationship OneToMany {
+	Orden{garzon} to Garzon,	
+	Bonos{garzon} to Garzon,
+    AttendanceRecord{garzon} to Garzon
+}
+
+relationship ManyToMany {
+	Orden{product} to Product{orden}
+}
+
+service all with serviceClass
+filter all
+paginate all with pagination
+
+

@@ -1,0 +1,28 @@
+
+{
+    "cafeteriaApp": {
+        "garzon" : {
+            "home": {
+                "title": "Garzons",
+                "createLabel": "Crear nuevo Garzon",
+                "createOrEditLabel": "Crear o editar Garzon"
+            },
+            "created": "Un nuevo Garzon ha sido creado con el identificador {{ param }}",
+            "updated": "Un Garzon ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Garzon ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Garzon {{ id }}?"
+            },
+            "detail": {
+                "title": "Garzon"
+            },
+            "userId": "User Id",
+            "picture": "Picture",
+            "name": "Name",
+            "lastName": "Last Name",
+            "orden": "Orden",
+            "bonos": "Bonos",
+            "attendanceRecord": "Attendance Record"
+        }
+    }
+}

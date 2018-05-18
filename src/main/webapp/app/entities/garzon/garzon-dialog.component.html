@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myGarzonLabel" jhiTranslate="cafeteriaApp.garzon.home.createOrEditLabel">Create or edit a Garzon</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!garzon.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="garzon.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.userId" for="field_userId">User Id</label>
+            <input type="text" class="form-control" name="userId" id="field_userId"
+                [(ngModel)]="garzon.userId" required/>
+            <div [hidden]="!(editForm.controls.userId?.dirty && editForm.controls.userId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userId?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.picture" for="field_picture">Picture</label>
+            <input type="text" class="form-control" name="picture" id="field_picture"
+                [(ngModel)]="garzon.picture" required/>
+            <div [hidden]="!(editForm.controls.picture?.dirty && editForm.controls.picture?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.picture?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="garzon.name" required/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="garzon.lastName" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.orden" for="field_orden">Orden</label>
+            <select class="form-control" id="field_orden" name="orden" [(ngModel)]="garzon.orden" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ordenOption.id === garzon.orden?.id ? garzon.orden : ordenOption" *ngFor="let ordenOption of ordens; trackBy: trackOrdenById">{{ordenOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.bonos" for="field_bonos">Bonos</label>
+            <select class="form-control" id="field_bonos" name="bonos" [(ngModel)]="garzon.bonos" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bonosOption.id === garzon.bonos?.id ? garzon.bonos : bonosOption" *ngFor="let bonosOption of bonos; trackBy: trackBonosById">{{bonosOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.garzon.attendanceRecord" for="field_attendanceRecord">Attendance Record</label>
+            <select class="form-control" id="field_attendanceRecord" name="attendanceRecord" [(ngModel)]="garzon.attendanceRecord" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="attendanceRecordOption.id === garzon.attendanceRecord?.id ? garzon.attendanceRecord : attendanceRecordOption" *ngFor="let attendanceRecordOption of attendancerecords; trackBy: trackAttendanceRecordById">{{attendanceRecordOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

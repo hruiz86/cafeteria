@@ -1,0 +1,9 @@
+{
+    "cafeteriaApp": {
+        "BonoType" : {
+            "null": "",
+            "DAYLY": "DAYLY",
+            "MONTHLY": "MONTHLY"
+        }
+    }
+}

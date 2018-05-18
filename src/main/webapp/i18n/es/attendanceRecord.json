@@ -1,0 +1,24 @@
+
+{
+    "cafeteriaApp": {
+        "attendanceRecord" : {
+            "home": {
+                "title": "Attendance Records",
+                "createLabel": "Crear nuevo Attendance Record",
+                "createOrEditLabel": "Crear o editar Attendance Record"
+            },
+            "created": "Un nuevo Attendance Record ha sido creado con el identificador {{ param }}",
+            "updated": "Un Attendance Record ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Attendance Record ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Attendance Record {{ id }}?"
+            },
+            "detail": {
+                "title": "Attendance Record"
+            },
+            "date": "Date",
+            "type": "Type",
+            "garzon": "Garzon"
+        }
+    }
+}

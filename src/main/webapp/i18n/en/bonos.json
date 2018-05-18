@@ -1,0 +1,24 @@
+
+{
+    "cafeteriaApp": {
+        "bonos" : {
+            "home": {
+                "title": "Bonos",
+                "createLabel": "Create a new Bonos",
+                "createOrEditLabel": "Create or edit a Bonos"
+            },
+            "created": "A new Bonos is created with identifier {{ param }}",
+            "updated": "A Bonos is updated with identifier {{ param }}",
+            "deleted": "A Bonos is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bonos {{ id }}?"
+            },
+            "detail": {
+                "title": "Bonos"
+            },
+            "type": "Type",
+            "amount": "Amount",
+            "garzon": "Garzon"
+        }
+    }
+}

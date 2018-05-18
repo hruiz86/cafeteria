@@ -1,0 +1,9 @@
+{
+    "cafeteriaApp": {
+        "AttendanceType" : {
+            "null": "",
+            "ON": "ON",
+            "OFF": "OFF"
+        }
+    }
+}

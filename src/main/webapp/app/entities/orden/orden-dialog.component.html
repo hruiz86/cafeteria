@@ -1,0 +1,60 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOrdenLabel" jhiTranslate="cafeteriaApp.orden.home.createOrEditLabel">Create or edit a Orden</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!orden.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="orden.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.orden.state" for="field_state">State</label>
+            <select class="form-control" name="state" [(ngModel)]="orden.state" id="field_state"  required>
+                <option value="PENDING_APPROVAL">{{'cafeteriaApp.State.PENDING_APPROVAL' | translate}}</option>
+                <option value="APROVED">{{'cafeteriaApp.State.APROVED' | translate}}</option>
+                <option value="CANCEL">{{'cafeteriaApp.State.CANCEL' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.state?.dirty && editForm.controls.state?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.state?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.orden.total" for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                [(ngModel)]="orden.total" required/>
+            <div [hidden]="!(editForm.controls.total?.dirty && editForm.controls.total?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.total?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.total?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="cafeteriaApp.orden.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" multiple name="product" [(ngModel)]="orden.products">
+                <option [ngValue]="getSelected(orden.products, productOption)" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

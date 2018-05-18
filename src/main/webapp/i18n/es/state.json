@@ -1,0 +1,10 @@
+{
+    "cafeteriaApp": {
+        "State" : {
+            "null": "",
+            "PENDING_APPROVAL": "PENDING_APPROVAL",
+            "APROVED": "APROVED",
+            "CANCEL": "CANCEL"
+        }
+    }
+}

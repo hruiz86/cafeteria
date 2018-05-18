@@ -1,0 +1,56 @@
+
+<div *ngIf="garzon">
+    <h2><span jhiTranslate="cafeteriaApp.garzon.detail.title">Garzon</span> {{garzon.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cafeteriaApp.garzon.userId">User Id</span></dt>
+        <dd>
+            <span>{{garzon.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="cafeteriaApp.garzon.picture">Picture</span></dt>
+        <dd>
+            <span>{{garzon.picture}}</span>
+        </dd>
+        <dt><span jhiTranslate="cafeteriaApp.garzon.name">Name</span></dt>
+        <dd>
+            <span>{{garzon.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cafeteriaApp.garzon.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{garzon.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="cafeteriaApp.garzon.orden">Orden</span></dt>
+        <dd>
+            <div *ngIf="garzon.orden">
+                <a [routerLink]="['/orden', garzon.orden?.id]">{{garzon.orden?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cafeteriaApp.garzon.bonos">Bonos</span></dt>
+        <dd>
+            <div *ngIf="garzon.bonos">
+                <a [routerLink]="['/bonos', garzon.bonos?.id]">{{garzon.bonos?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cafeteriaApp.garzon.attendanceRecord">Attendance Record</span></dt>
+        <dd>
+            <div *ngIf="garzon.attendanceRecord">
+                <a [routerLink]="['/attendance-record', garzon.attendanceRecord?.id]">{{garzon.attendanceRecord?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'garzon/'+ garzon.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
