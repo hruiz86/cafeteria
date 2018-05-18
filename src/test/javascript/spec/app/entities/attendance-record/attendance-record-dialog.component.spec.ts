@@ -9,6 +9,7 @@ import { CafeteriaTestModule } from '../../../test.module';
 import { AttendanceRecordDialogComponent } from '../../../../../../main/webapp/app/entities/attendance-record/attendance-record-dialog.component';
 import { AttendanceRecordService } from '../../../../../../main/webapp/app/entities/attendance-record/attendance-record.service';
 import { AttendanceRecord } from '../../../../../../main/webapp/app/entities/attendance-record/attendance-record.model';
+import { GarzonService } from '../../../../../../main/webapp/app/entities/garzon';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [CafeteriaTestModule],
                 declarations: [AttendanceRecordDialogComponent],
                 providers: [
+                    GarzonService,
                     AttendanceRecordService
                 ]
             })

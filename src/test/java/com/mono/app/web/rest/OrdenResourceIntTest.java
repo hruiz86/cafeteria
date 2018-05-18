@@ -293,7 +293,7 @@ public class OrdenResourceIntTest {
         Garzon garzon = GarzonResourceIntTest.createEntity(em);
         em.persist(garzon);
         em.flush();
-        orden.addGarzon(garzon);
+        orden.setGarzon(garzon);
         ordenRepository.saveAndFlush(orden);
         Long garzonId = garzon.getId();
 

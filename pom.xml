@@ -5,7 +5,6 @@
     <groupId>com.mono.app</groupId>
     <artifactId>cafeteria</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>Cafeteria</name>
 
     <properties>
@@ -372,11 +371,11 @@
                             <version>${mapstruct.version}</version>
                         </path>
                         <!-- For JPA static metamodel generation -->
-                        <path>
+                        <!-- <path>
                             <groupId>org.hibernate</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
                             <version>${hibernate.version}</version>
-                        </path>
+                        </path> -->
 
                     </annotationProcessorPaths>
                 </configuration>
@@ -1018,4 +1017,5 @@
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
     </profiles>
+    <packaging>war</packaging>
 </project>

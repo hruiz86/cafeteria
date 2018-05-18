@@ -84,15 +84,6 @@ public class GarzonQueryService extends QueryService<Garzon> {
             if (criteria.getLastName() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getLastName(), Garzon_.lastName));
             }
-            if (criteria.getOrdenId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getOrdenId(), Garzon_.orden, Orden_.id));
-            }
-            if (criteria.getBonosId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getBonosId(), Garzon_.bonos, Bonos_.id));
-            }
-            if (criteria.getAttendanceRecordId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getAttendanceRecordId(), Garzon_.attendanceRecord, AttendanceRecord_.id));
-            }
         }
         return specification;
     }

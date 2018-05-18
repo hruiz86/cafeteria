@@ -8,11 +8,18 @@
     -->
     <changeSet id="20180518013158-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="garzon_id"
+                                 baseTableName="orden"
+                                 constraintName="fk_orden_garzon_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="garzon"/>
+
         <addForeignKeyConstraint baseColumnNames="ordens_id"
                                  baseTableName="orden_product"
                                  constraintName="fk_orden_product_ordens_id"
                                  referencedColumnNames="id"
                                  referencedTableName="orden"/>
+                                 
         <addForeignKeyConstraint baseColumnNames="products_id"
                                  baseTableName="orden_product"
                                  constraintName="fk_orden_product_products_id"

@@ -7,9 +7,6 @@ export class Garzon implements BaseEntity {
         public picture?: string,
         public name?: string,
         public lastName?: string,
-        public orden?: BaseEntity,
-        public bonos?: BaseEntity,
-        public attendanceRecord?: BaseEntity,
     ) {
     }
 }

@@ -19,6 +19,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="state"><span jhiTranslate="cafeteriaApp.orden.state">State</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="total"><span jhiTranslate="cafeteriaApp.orden.total">Total</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="garzon.id"><span jhiTranslate="cafeteriaApp.orden.garzon">Garzon</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +28,11 @@
                 <td><a [routerLink]="['../orden', orden.id ]">{{orden.id}}</a></td>
                 <td jhiTranslate="{{'cafeteriaApp.State.' + orden.state}}">{{orden.state}}</td>
                 <td>{{orden.total}}</td>
+                <td>
+                    <div *ngIf="orden.garzon">
+                        <a [routerLink]="['../garzon', orden.garzon?.id ]" >{{orden.garzon?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

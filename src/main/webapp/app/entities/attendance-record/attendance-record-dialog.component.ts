@@ -4,11 +4,12 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { AttendanceRecord } from './attendance-record.model';
 import { AttendanceRecordPopupService } from './attendance-record-popup.service';
 import { AttendanceRecordService } from './attendance-record.service';
+import { Garzon, GarzonService } from '../garzon';
 
 @Component({
     selector: 'jhi-attendance-record-dialog',
@@ -19,15 +20,21 @@ export class AttendanceRecordDialogComponent implements OnInit {
     attendanceRecord: AttendanceRecord;
     isSaving: boolean;
 
+    garzons: Garzon[];
+
     constructor(
         public activeModal: NgbActiveModal,
+        private jhiAlertService: JhiAlertService,
         private attendanceRecordService: AttendanceRecordService,
+        private garzonService: GarzonService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.garzonService.query()
+            .subscribe((res: HttpResponse<Garzon[]>) => { this.garzons = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -58,6 +65,14 @@ export class AttendanceRecordDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackGarzonById(index: number, item: Garzon) {
+        return item.id;
     }
 }
 

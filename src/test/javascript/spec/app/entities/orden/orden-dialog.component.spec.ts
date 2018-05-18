@@ -9,6 +9,7 @@ import { CafeteriaTestModule } from '../../../test.module';
 import { OrdenDialogComponent } from '../../../../../../main/webapp/app/entities/orden/orden-dialog.component';
 import { OrdenService } from '../../../../../../main/webapp/app/entities/orden/orden.service';
 import { Orden } from '../../../../../../main/webapp/app/entities/orden/orden.model';
+import { GarzonService } from '../../../../../../main/webapp/app/entities/garzon';
 import { ProductService } from '../../../../../../main/webapp/app/entities/product';
 
 describe('Component Tests', () => {
@@ -25,6 +26,7 @@ describe('Component Tests', () => {
                 imports: [CafeteriaTestModule],
                 declarations: [OrdenDialogComponent],
                 providers: [
+                    GarzonService,
                     ProductService,
                     OrdenService
                 ]

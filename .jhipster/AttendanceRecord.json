@@ -2,10 +2,10 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "many-to-one",
             "relationshipName": "garzon",
             "otherEntityName": "garzon",
-            "otherEntityRelationshipName": "attendanceRecord"
+            "otherEntityField": "id"
         }
     ],
     "fields": [

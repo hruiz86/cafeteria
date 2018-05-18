@@ -292,7 +292,7 @@ public class BonosResourceIntTest {
         Garzon garzon = GarzonResourceIntTest.createEntity(em);
         em.persist(garzon);
         em.flush();
-        bonos.addGarzon(garzon);
+        bonos.setGarzon(garzon);
         bonosRepository.saveAndFlush(bonos);
         Long garzonId = garzon.getId();
 

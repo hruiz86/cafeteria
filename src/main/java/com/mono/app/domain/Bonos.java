@@ -1,6 +1,5 @@
 package com.mono.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 import com.mono.app.domain.enumeration.BonoType;
@@ -38,10 +35,8 @@ public class Bonos implements Serializable {
     @Column(name = "amount", nullable = false)
     private Double amount;
 
-    @OneToMany(mappedBy = "bonos")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Garzon> garzons = new HashSet<>();
+    @ManyToOne
+    private Garzon garzon;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -78,29 +73,17 @@ public class Bonos implements Serializable {
         this.amount = amount;
     }
 
-    public Set<Garzon> getGarzons() {
-        return garzons;
+    public Garzon getGarzon() {
+        return garzon;
     }
 
-    public Bonos garzons(Set<Garzon> garzons) {
-        this.garzons = garzons;
+    public Bonos garzon(Garzon garzon) {
+        this.garzon = garzon;
         return this;
     }
 
-    public Bonos addGarzon(Garzon garzon) {
-        this.garzons.add(garzon);
-        garzon.setBonos(this);
-        return this;
-    }
-
-    public Bonos removeGarzon(Garzon garzon) {
-        this.garzons.remove(garzon);
-        garzon.setBonos(null);
-        return this;
-    }
-
-    public void setGarzons(Set<Garzon> garzons) {
-        this.garzons = garzons;
+    public void setGarzon(Garzon garzon) {
+        this.garzon = garzon;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

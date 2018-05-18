@@ -3,9 +3,6 @@ package com.mono.app.web.rest;
 import com.mono.app.CafeteriaApp;
 
 import com.mono.app.domain.Garzon;
-import com.mono.app.domain.Orden;
-import com.mono.app.domain.Bonos;
-import com.mono.app.domain.AttendanceRecord;
 import com.mono.app.repository.GarzonRepository;
 import com.mono.app.service.GarzonService;
 import com.mono.app.web.rest.errors.ExceptionTranslator;
@@ -395,63 +392,6 @@ public class GarzonResourceIntTest {
         // Get all the garzonList where lastName is null
         defaultGarzonShouldNotBeFound("lastName.specified=false");
     }
-
-    @Test
-    @Transactional
-    public void getAllGarzonsByOrdenIsEqualToSomething() throws Exception {
-        // Initialize the database
-        Orden orden = OrdenResourceIntTest.createEntity(em);
-        em.persist(orden);
-        em.flush();
-        garzon.setOrden(orden);
-        garzonRepository.saveAndFlush(garzon);
-        Long ordenId = orden.getId();
-
-        // Get all the garzonList where orden equals to ordenId
-        defaultGarzonShouldBeFound("ordenId.equals=" + ordenId);
-
-        // Get all the garzonList where orden equals to ordenId + 1
-        defaultGarzonShouldNotBeFound("ordenId.equals=" + (ordenId + 1));
-    }
-
-
-    @Test
-    @Transactional
-    public void getAllGarzonsByBonosIsEqualToSomething() throws Exception {
-        // Initialize the database
-        Bonos bonos = BonosResourceIntTest.createEntity(em);
-        em.persist(bonos);
-        em.flush();
-        garzon.setBonos(bonos);
-        garzonRepository.saveAndFlush(garzon);
-        Long bonosId = bonos.getId();
-
-        // Get all the garzonList where bonos equals to bonosId
-        defaultGarzonShouldBeFound("bonosId.equals=" + bonosId);
-
-        // Get all the garzonList where bonos equals to bonosId + 1
-        defaultGarzonShouldNotBeFound("bonosId.equals=" + (bonosId + 1));
-    }
-
-
-    @Test
-    @Transactional
-    public void getAllGarzonsByAttendanceRecordIsEqualToSomething() throws Exception {
-        // Initialize the database
-        AttendanceRecord attendanceRecord = AttendanceRecordResourceIntTest.createEntity(em);
-        em.persist(attendanceRecord);
-        em.flush();
-        garzon.setAttendanceRecord(attendanceRecord);
-        garzonRepository.saveAndFlush(garzon);
-        Long attendanceRecordId = attendanceRecord.getId();
-
-        // Get all the garzonList where attendanceRecord equals to attendanceRecordId
-        defaultGarzonShouldBeFound("attendanceRecordId.equals=" + attendanceRecordId);
-
-        // Get all the garzonList where attendanceRecord equals to attendanceRecordId + 1
-        defaultGarzonShouldNotBeFound("attendanceRecordId.equals=" + (attendanceRecordId + 1));
-    }
-
     /**
      * Executes the search, and checks that the default entity is returned
      */

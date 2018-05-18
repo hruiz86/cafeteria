@@ -12,6 +12,12 @@
         <dd>
             <span>{{bonos.amount}}</span>
         </dd>
+        <dt><span jhiTranslate="cafeteriaApp.bonos.garzon">Garzon</span></dt>
+        <dd>
+            <div *ngIf="bonos.garzon">
+                <a [routerLink]="['/garzon', bonos.garzon?.id]">{{bonos.garzon?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

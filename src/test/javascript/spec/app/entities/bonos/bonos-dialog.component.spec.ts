@@ -9,6 +9,7 @@ import { CafeteriaTestModule } from '../../../test.module';
 import { BonosDialogComponent } from '../../../../../../main/webapp/app/entities/bonos/bonos-dialog.component';
 import { BonosService } from '../../../../../../main/webapp/app/entities/bonos/bonos.service';
 import { Bonos } from '../../../../../../main/webapp/app/entities/bonos/bonos.model';
+import { GarzonService } from '../../../../../../main/webapp/app/entities/garzon';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [CafeteriaTestModule],
                 declarations: [BonosDialogComponent],
                 providers: [
+                    GarzonService,
                     BonosService
                 ]
             })

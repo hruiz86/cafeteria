@@ -294,7 +294,7 @@ public class AttendanceRecordResourceIntTest {
         Garzon garzon = GarzonResourceIntTest.createEntity(em);
         em.persist(garzon);
         em.flush();
-        attendanceRecord.addGarzon(garzon);
+        attendanceRecord.setGarzon(garzon);
         attendanceRecordRepository.saveAndFlush(attendanceRecord);
         Long garzonId = garzon.getId();
 

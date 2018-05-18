@@ -10,7 +10,7 @@ export class AttendanceRecord implements BaseEntity {
         public id?: number,
         public date?: any,
         public type?: AttendanceType,
-        public garzons?: BaseEntity[],
+        public garzon?: BaseEntity,
     ) {
     }
 }

@@ -80,7 +80,7 @@ public class OrdenQueryService extends QueryService<Orden> {
                 specification = specification.and(buildRangeSpecification(criteria.getTotal(), Orden_.total));
             }
             if (criteria.getGarzonId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getGarzonId(), Orden_.garzons, Garzon_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getGarzonId(), Orden_.garzon, Garzon_.id));
             }
             if (criteria.getProductId() != null) {
                 specification = specification.and(buildReferringEntitySpecification(criteria.getProductId(), Orden_.products, Product_.id));

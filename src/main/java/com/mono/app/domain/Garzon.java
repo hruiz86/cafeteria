@@ -39,15 +39,6 @@ public class Garzon implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToOne
-    private Orden orden;
-
-    @ManyToOne
-    private Bonos bonos;
-
-    @ManyToOne
-    private AttendanceRecord attendanceRecord;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -107,45 +98,6 @@ public class Garzon implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Orden getOrden() {
-        return orden;
-    }
-
-    public Garzon orden(Orden orden) {
-        this.orden = orden;
-        return this;
-    }
-
-    public void setOrden(Orden orden) {
-        this.orden = orden;
-    }
-
-    public Bonos getBonos() {
-        return bonos;
-    }
-
-    public Garzon bonos(Bonos bonos) {
-        this.bonos = bonos;
-        return this;
-    }
-
-    public void setBonos(Bonos bonos) {
-        this.bonos = bonos;
-    }
-
-    public AttendanceRecord getAttendanceRecord() {
-        return attendanceRecord;
-    }
-
-    public Garzon attendanceRecord(AttendanceRecord attendanceRecord) {
-        this.attendanceRecord = attendanceRecord;
-        return this;
-    }
-
-    public void setAttendanceRecord(AttendanceRecord attendanceRecord) {
-        this.attendanceRecord = attendanceRecord;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -12,6 +12,12 @@
         <dd>
             <span jhiTranslate="{{'cafeteriaApp.AttendanceType.' + attendanceRecord.type}}">{{attendanceRecord.type}}</span>
         </dd>
+        <dt><span jhiTranslate="cafeteriaApp.attendanceRecord.garzon">Garzon</span></dt>
+        <dd>
+            <div *ngIf="attendanceRecord.garzon">
+                <a [routerLink]="['/garzon', attendanceRecord.garzon?.id]">{{attendanceRecord.garzon?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

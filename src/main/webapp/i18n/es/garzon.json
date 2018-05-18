@@ -19,10 +19,7 @@
             "userId": "User Id",
             "picture": "Picture",
             "name": "Name",
-            "lastName": "Last Name",
-            "orden": "Orden",
-            "bonos": "Bonos",
-            "attendanceRecord": "Attendance Record"
+            "lastName": "Last Name"
         }
     }
 }

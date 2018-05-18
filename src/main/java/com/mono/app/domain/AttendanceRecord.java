@@ -1,6 +1,5 @@
 package com.mono.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,8 +8,6 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 import com.mono.app.domain.enumeration.AttendanceType;
@@ -39,10 +36,8 @@ public class AttendanceRecord implements Serializable {
     @Column(name = "jhi_type", nullable = false)
     private AttendanceType type;
 
-    @OneToMany(mappedBy = "attendanceRecord")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Garzon> garzons = new HashSet<>();
+    @ManyToOne
+    private Garzon garzon;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -79,29 +74,17 @@ public class AttendanceRecord implements Serializable {
         this.type = type;
     }
 
-    public Set<Garzon> getGarzons() {
-        return garzons;
+    public Garzon getGarzon() {
+        return garzon;
     }
 
-    public AttendanceRecord garzons(Set<Garzon> garzons) {
-        this.garzons = garzons;
+    public AttendanceRecord garzon(Garzon garzon) {
+        this.garzon = garzon;
         return this;
     }
 
-    public AttendanceRecord addGarzon(Garzon garzon) {
-        this.garzons.add(garzon);
-        garzon.setAttendanceRecord(this);
-        return this;
-    }
-
-    public AttendanceRecord removeGarzon(Garzon garzon) {
-        this.garzons.remove(garzon);
-        garzon.setAttendanceRecord(null);
-        return this;
-    }
-
-    public void setGarzons(Set<Garzon> garzons) {
-        this.garzons = garzons;
+    public void setGarzon(Garzon garzon) {
+        this.garzon = garzon;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

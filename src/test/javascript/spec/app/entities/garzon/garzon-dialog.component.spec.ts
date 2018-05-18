@@ -9,9 +9,6 @@ import { CafeteriaTestModule } from '../../../test.module';
 import { GarzonDialogComponent } from '../../../../../../main/webapp/app/entities/garzon/garzon-dialog.component';
 import { GarzonService } from '../../../../../../main/webapp/app/entities/garzon/garzon.service';
 import { Garzon } from '../../../../../../main/webapp/app/entities/garzon/garzon.model';
-import { OrdenService } from '../../../../../../main/webapp/app/entities/orden';
-import { BonosService } from '../../../../../../main/webapp/app/entities/bonos';
-import { AttendanceRecordService } from '../../../../../../main/webapp/app/entities/attendance-record';
 
 describe('Component Tests', () => {
 
@@ -27,9 +24,6 @@ describe('Component Tests', () => {
                 imports: [CafeteriaTestModule],
                 declarations: [GarzonDialogComponent],
                 providers: [
-                    OrdenService,
-                    BonosService,
-                    AttendanceRecordService,
                     GarzonService
                 ]
             })

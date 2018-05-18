@@ -43,6 +43,13 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.attendanceRecord.garzon" for="field_garzon">Garzon</label>
+            <select class="form-control" id="field_garzon" name="garzon" [(ngModel)]="attendanceRecord.garzon" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="garzonOption.id === attendanceRecord.garzon?.id ? attendanceRecord.garzon : garzonOption" *ngFor="let garzonOption of garzons; trackBy: trackGarzonById">{{garzonOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

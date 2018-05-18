@@ -41,6 +41,13 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.bonos.garzon" for="field_garzon">Garzon</label>
+            <select class="form-control" id="field_garzon" name="garzon" [(ngModel)]="bonos.garzon" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="garzonOption.id === bonos.garzon?.id ? bonos.garzon : garzonOption" *ngFor="let garzonOption of garzons; trackBy: trackGarzonById">{{garzonOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

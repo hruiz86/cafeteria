@@ -4,14 +4,11 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { Garzon } from './garzon.model';
 import { GarzonPopupService } from './garzon-popup.service';
 import { GarzonService } from './garzon.service';
-import { Orden, OrdenService } from '../orden';
-import { Bonos, BonosService } from '../bonos';
-import { AttendanceRecord, AttendanceRecordService } from '../attendance-record';
 
 @Component({
     selector: 'jhi-garzon-dialog',
@@ -22,31 +19,15 @@ export class GarzonDialogComponent implements OnInit {
     garzon: Garzon;
     isSaving: boolean;
 
-    ordens: Orden[];
-
-    bonos: Bonos[];
-
-    attendancerecords: AttendanceRecord[];
-
     constructor(
         public activeModal: NgbActiveModal,
-        private jhiAlertService: JhiAlertService,
         private garzonService: GarzonService,
-        private ordenService: OrdenService,
-        private bonosService: BonosService,
-        private attendanceRecordService: AttendanceRecordService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.ordenService.query()
-            .subscribe((res: HttpResponse<Orden[]>) => { this.ordens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.bonosService.query()
-            .subscribe((res: HttpResponse<Bonos[]>) => { this.bonos = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.attendanceRecordService.query()
-            .subscribe((res: HttpResponse<AttendanceRecord[]>) => { this.attendancerecords = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -77,22 +58,6 @@ export class GarzonDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(error: any) {
-        this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackOrdenById(index: number, item: Orden) {
-        return item.id;
-    }
-
-    trackBonosById(index: number, item: Bonos) {
-        return item.id;
-    }
-
-    trackAttendanceRecordById(index: number, item: AttendanceRecord) {
-        return item.id;
     }
 }
 

@@ -39,7 +39,7 @@ entity AttendanceRecord {
     type AttendanceType required
 }
 
-relationship OneToMany {
+relationship ManyToOne {
 	Orden{garzon} to Garzon,	
 	Bonos{garzon} to Garzon,
     AttendanceRecord{garzon} to Garzon

@@ -80,7 +80,7 @@ public class AttendanceRecordQueryService extends QueryService<AttendanceRecord>
                 specification = specification.and(buildSpecification(criteria.getType(), AttendanceRecord_.type));
             }
             if (criteria.getGarzonId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getGarzonId(), AttendanceRecord_.garzons, Garzon_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getGarzonId(), AttendanceRecord_.garzon, Garzon_.id));
             }
         }
         return specification;

@@ -10,7 +10,7 @@ export class Bonos implements BaseEntity {
         public id?: number,
         public type?: BonoType,
         public amount?: number,
-        public garzons?: BaseEntity[],
+        public garzon?: BaseEntity,
     ) {
     }
 }

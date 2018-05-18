@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity AttendanceRecord.
+    -->
+    <changeSet id="20180518013200-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="garzon_id"
+                                 baseTableName="attendance_record"
+                                 constraintName="fk_attendance_record_garzon_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="garzon"/>
+
+    </changeSet>
+</databaseChangeLog>

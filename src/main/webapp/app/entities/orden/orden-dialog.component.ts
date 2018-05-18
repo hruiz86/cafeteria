@@ -9,6 +9,7 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Orden } from './orden.model';
 import { OrdenPopupService } from './orden-popup.service';
 import { OrdenService } from './orden.service';
+import { Garzon, GarzonService } from '../garzon';
 import { Product, ProductService } from '../product';
 
 @Component({
@@ -20,12 +21,15 @@ export class OrdenDialogComponent implements OnInit {
     orden: Orden;
     isSaving: boolean;
 
+    garzons: Garzon[];
+
     products: Product[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private ordenService: OrdenService,
+        private garzonService: GarzonService,
         private productService: ProductService,
         private eventManager: JhiEventManager
     ) {
@@ -33,6 +37,8 @@ export class OrdenDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.garzonService.query()
+            .subscribe((res: HttpResponse<Garzon[]>) => { this.garzons = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.productService.query()
             .subscribe((res: HttpResponse<Product[]>) => { this.products = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -69,6 +75,10 @@ export class OrdenDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackGarzonById(index: number, item: Garzon) {
+        return item.id;
     }
 
     trackProductById(index: number, item: Product) {

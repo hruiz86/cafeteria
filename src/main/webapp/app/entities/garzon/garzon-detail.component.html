@@ -20,24 +20,6 @@
         <dd>
             <span>{{garzon.lastName}}</span>
         </dd>
-        <dt><span jhiTranslate="cafeteriaApp.garzon.orden">Orden</span></dt>
-        <dd>
-            <div *ngIf="garzon.orden">
-                <a [routerLink]="['/orden', garzon.orden?.id]">{{garzon.orden?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="cafeteriaApp.garzon.bonos">Bonos</span></dt>
-        <dd>
-            <div *ngIf="garzon.bonos">
-                <a [routerLink]="['/bonos', garzon.bonos?.id]">{{garzon.bonos?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="cafeteriaApp.garzon.attendanceRecord">Attendance Record</span></dt>
-        <dd>
-            <div *ngIf="garzon.attendanceRecord">
-                <a [routerLink]="['/attendance-record', garzon.attendanceRecord?.id]">{{garzon.attendanceRecord?.id}}</a>
-            </div>
-        </dd>
     </dl>
 
     <button type="submit"

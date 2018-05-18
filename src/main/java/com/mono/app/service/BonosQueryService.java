@@ -80,7 +80,7 @@ public class BonosQueryService extends QueryService<Bonos> {
                 specification = specification.and(buildRangeSpecification(criteria.getAmount(), Bonos_.amount));
             }
             if (criteria.getGarzonId() != null) {
-                specification = specification.and(buildReferringEntitySpecification(criteria.getGarzonId(), Bonos_.garzons, Garzon_.id));
+                specification = specification.and(buildReferringEntitySpecification(criteria.getGarzonId(), Bonos_.garzon, Garzon_.id));
             }
         }
         return specification;

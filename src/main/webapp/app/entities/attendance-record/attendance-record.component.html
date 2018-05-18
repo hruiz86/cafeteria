@@ -19,6 +19,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="date"><span jhiTranslate="cafeteriaApp.attendanceRecord.date">Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="type"><span jhiTranslate="cafeteriaApp.attendanceRecord.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="garzon.id"><span jhiTranslate="cafeteriaApp.attendanceRecord.garzon">Garzon</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +28,11 @@
                 <td><a [routerLink]="['../attendance-record', attendanceRecord.id ]">{{attendanceRecord.id}}</a></td>
                 <td>{{attendanceRecord.date | date:'medium'}}</td>
                 <td jhiTranslate="{{'cafeteriaApp.AttendanceType.' + attendanceRecord.type}}">{{attendanceRecord.type}}</td>
+                <td>
+                    <div *ngIf="attendanceRecord.garzon">
+                        <a [routerLink]="['../garzon', attendanceRecord.garzon?.id ]" >{{attendanceRecord.garzon?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

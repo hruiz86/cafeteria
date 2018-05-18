@@ -1,6 +1,5 @@
 package com.mono.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -38,10 +37,8 @@ public class Orden implements Serializable {
     @Column(name = "total", nullable = false)
     private Double total;
 
-    @OneToMany(mappedBy = "orden")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Garzon> garzons = new HashSet<>();
+    @ManyToOne
+    private Garzon garzon;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -85,29 +82,17 @@ public class Orden implements Serializable {
         this.total = total;
     }
 
-    public Set<Garzon> getGarzons() {
-        return garzons;
+    public Garzon getGarzon() {
+        return garzon;
     }
 
-    public Orden garzons(Set<Garzon> garzons) {
-        this.garzons = garzons;
+    public Orden garzon(Garzon garzon) {
+        this.garzon = garzon;
         return this;
     }
 
-    public Orden addGarzon(Garzon garzon) {
-        this.garzons.add(garzon);
-        garzon.setOrden(this);
-        return this;
-    }
-
-    public Orden removeGarzon(Garzon garzon) {
-        this.garzons.remove(garzon);
-        garzon.setOrden(null);
-        return this;
-    }
-
-    public void setGarzons(Set<Garzon> garzons) {
-        this.garzons = garzons;
+    public void setGarzon(Garzon garzon) {
+        this.garzon = garzon;
     }
 
     public Set<Product> getProducts() {

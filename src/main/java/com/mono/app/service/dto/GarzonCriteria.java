@@ -36,12 +36,6 @@ public class GarzonCriteria implements Serializable {
 
     private StringFilter lastName;
 
-    private LongFilter ordenId;
-
-    private LongFilter bonosId;
-
-    private LongFilter attendanceRecordId;
-
     public GarzonCriteria() {
     }
 
@@ -85,30 +79,6 @@ public class GarzonCriteria implements Serializable {
         this.lastName = lastName;
     }
 
-    public LongFilter getOrdenId() {
-        return ordenId;
-    }
-
-    public void setOrdenId(LongFilter ordenId) {
-        this.ordenId = ordenId;
-    }
-
-    public LongFilter getBonosId() {
-        return bonosId;
-    }
-
-    public void setBonosId(LongFilter bonosId) {
-        this.bonosId = bonosId;
-    }
-
-    public LongFilter getAttendanceRecordId() {
-        return attendanceRecordId;
-    }
-
-    public void setAttendanceRecordId(LongFilter attendanceRecordId) {
-        this.attendanceRecordId = attendanceRecordId;
-    }
-
     @Override
     public String toString() {
         return "GarzonCriteria{" +
@@ -117,9 +87,6 @@ public class GarzonCriteria implements Serializable {
                 (picture != null ? "picture=" + picture + ", " : "") +
                 (name != null ? "name=" + name + ", " : "") +
                 (lastName != null ? "lastName=" + lastName + ", " : "") +
-                (ordenId != null ? "ordenId=" + ordenId + ", " : "") +
-                (bonosId != null ? "bonosId=" + bonosId + ", " : "") +
-                (attendanceRecordId != null ? "attendanceRecordId=" + attendanceRecordId + ", " : "") +
             "}";
     }
 

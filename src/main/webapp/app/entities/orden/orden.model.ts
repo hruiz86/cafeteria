@@ -11,7 +11,7 @@ export class Orden implements BaseEntity {
         public id?: number,
         public state?: State,
         public total?: number,
-        public garzons?: BaseEntity[],
+        public garzon?: BaseEntity,
         public products?: BaseEntity[],
     ) {
     }

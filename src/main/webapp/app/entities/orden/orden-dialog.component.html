@@ -43,6 +43,13 @@
         </div>
 
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cafeteriaApp.orden.garzon" for="field_garzon">Garzon</label>
+            <select class="form-control" id="field_garzon" name="garzon" [(ngModel)]="orden.garzon" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="garzonOption.id === orden.garzon?.id ? orden.garzon : garzonOption" *ngFor="let garzonOption of garzons; trackBy: trackGarzonById">{{garzonOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label jhiTranslate="cafeteriaApp.orden.product" for="field_product">Product</label>
             <select class="form-control" id="field_product" multiple name="product" [(ngModel)]="orden.products">
                 <option [ngValue]="getSelected(orden.products, productOption)" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
