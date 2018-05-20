@@ -15,14 +15,25 @@
         <dt><span jhiTranslate="cafeteriaApp.orden.garzon">Garzon</span></dt>
         <dd>
             <div *ngIf="orden.garzon">
-                <a [routerLink]="['/garzon', orden.garzon?.id]">{{orden.garzon?.id}}</a>
+                <a [routerLink]="['/garzon', orden.garzon?.id]">{{orden.garzon?.name}} {{orden.garzon?.lastName}}</a>
             </div>
         </dd>
         <dt><span jhiTranslate="cafeteriaApp.orden.product">Product</span></dt>
         <dd>
-            <span *ngFor="let product of orden.products; let last = last">
-                <a [routerLink]="['/product', product?.id ]">{{product.id}}</a>{{last ? '' : ', '}}
-            </span>
+        	 <table class="table table-striped">
+	            <thead>
+		            <tr>
+		            	<th><span jhiTranslate="cafeteriaApp.product.description">Description</span></th>
+		            	<th><span jhiTranslate="cafeteriaApp.product.price">Price</span></th>		            
+	            	</tr>
+	            </thead>
+	            <tbody>
+		            <tr *ngFor="let product of orden.products; let last = last">
+		               <td><a [routerLink]="['/product', product?.id ]">{{product.name}}</a></td>
+		               <td><a [routerLink]="['/product', product?.id ]">{{product.price}}</a></td>
+		            </tr>
+		        </tbody>
+		      </table>
         </dd>
     </dl>
 
